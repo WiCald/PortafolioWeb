@@ -239,7 +239,6 @@ export default function App() {
               {toggleInfo && <p className="mt-2 text-sm">React permite crear interfaces reactivas fácilmente.</p>}
             </Card>
             <Card title="Contacto" titleColor="hover:text-cyan-400">
-              <p>Correo: cal22018@uvg.edu.gt</p>
               <p>Discord: <strong>lune7997</strong></p>
               <form className="flex flex-col gap-2 mt-2" onSubmit={(e) => { e.preventDefault(); alert("Mensaje enviado!"); }}>
                 <input placeholder="Correo" className="p-2 border rounded text-black" required />
