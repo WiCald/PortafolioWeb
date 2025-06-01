@@ -12,11 +12,11 @@ Este portafolio fue creado como proyecto final para el curso de Tecnologías Web
 ## Tecnologías demostradas
 | Tecnología   | Ejemplo incluido |
 |--------------|------------------|
-| **HTML**     | Una historia corta y un poema (accesible desde la tarjeta "HTML") |
-| **CSS**      | Arte visual usando solo HTML y CSS (en la tarjeta "CSS") |
-| **JavaScript** | Creamos un chat funcional dentro de un servidor local durante el curso |
-| **API**      | Participé en el desarrollo del backend para el proyecto *La Liga Tracker* |
-| **React**    | Juego de memoria interactivo creado con hooks y componentes funcionales |
+| **HTML**     | Una historia corta se hizo en clase, pero no se ve aquí y un poema (Sí se ve) (accesible desde la tarjeta "HTML") |
+| **CSS**      | Arte visual usando solo HTML y CSS (en la tarjeta "CSS"). Se ve un laboratorio hecho en clase para hacer arte aquí |
+| **JavaScript** | Creamos un chat funcional dentro de un servidor local durante el curso. También aquí se muestra un gif aleatorio de un gato cada vez que se carga la página. |
+| **API**      | Participé en el desarrollo del backend para el proyecto *La Liga Tracker.* En la página se usa para mostrar uno de una muestra pequeña de datos curiosos |
+| **React**    | Juego de memoria interactivo creado con hooks y componentes funcionales. También hay un contador de cuántas veces se hace click a un botón y un botón para mostrar u ocultar información |
 
 ## Características del portafolio
 - Modo claro / oscuro
