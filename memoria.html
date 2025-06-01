@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 6</title>
+  <!-- React y Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; margin: 0; padding: 20px; background: #333; }
+    .controls { margin-bottom: 15px; }
+    .controls button { margin: 0 5px; padding: 8px 12px; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; background: #667eea; color: #fff; transition: background 0.3s; }
+    .controls button:hover { background: #5a6ecd; }
+    .grid { display: grid; grid-template-columns: repeat(4, 100px); grid-gap: 12px; perspective: 1000px; }
+    .card { width: 100px; height: 100px; cursor: pointer; position: relative; transform-style: preserve-3d; transition: transform 0.4s ease, box-shadow 0.4s ease; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .card:hover:not(.flipped):not(.matched) { transform: scale(1.08); box-shadow: 0 6px 14px rgba(0,0,0,0.3); }
+    .card.flipped { transform: rotateY(180deg); }
+    .card.matched { animation: bounce 0.6s ease; }
+    @keyframes bounce { 0%,20%,50%,80%,100% { transform: rotateY(180deg) translateY(0); } 40% { transform: rotateY(180deg) translateY(-10px); } 60% { transform: rotateY(180deg) translateY(-5px); } }
+    .card .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+    .card .back { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .card .front { background: linear-gradient(135deg, #9b59b6, #8e44ad); transform: rotateY(180deg); font-size: 2.2rem; color: #fff; box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); }
+    .message { margin-top: 15px; font-size: 1.5rem; color: #28a745; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+    function shuffle(array) { const copy = [...array]; for (let i = copy.length-1; i>0; i--) { const j = Math.floor(Math.random()*(i+1)); [copy[i], copy[j]] = [copy[j], copy[i]]; } return copy; }
+    function MemoryGame() {
+      const symbols=['🐶','🐱','🦊','🐼','🦁','🐸','🐵','🐨'];
+      const total = symbols.length*2;
+      const [cards, setCards] = useState([]);
+      const [flipped, setFlipped] = useState([]);
+      const [matched, setMatched] = useState([]);
+      const [moves, setMoves] = useState(0);
+      const [completed, setCompleted] = useState(false);
+      const [started, setStarted] = useState(false);
+      const [preview, setPreview] = useState(false);
+      const resetGame = (deck) => {
+        setCards(deck);
+        setFlipped([]);
+        setMatched([]);
+        setMoves(0);
+        setCompleted(false);
+      };
+      const startGame = () => {
+        const deck = shuffle([...symbols, ...symbols]).map((sym,i)=>({id:i,sym}));
+        resetGame(deck);
+        setStarted(true);
+        setPreview(true);
+        setFlipped(deck.map(c=>c.id));
+        setTimeout(()=>{ setFlipped([]); setPreview(false); },3000);
+      };
+      const handleClick = (card) => {
+        if(!started||preview||flipped.length===2||flipped.includes(card.id)||matched.includes(card.id))return;
+        const newFlipped=[...flipped,card.id]; setFlipped(newFlipped);
+        if(newFlipped.length===2){ setMoves(m=>m+1); const [a,b]=newFlipped;
+          if(cards[a].sym===cards[b].sym){
+            setMatched(m=>[...m,a,b]);
+            setTimeout(()=>setFlipped(f=>f.filter(id=>id!==a&&id!==b)),600);
+            if(matched.length+2===total) setCompleted(true);
+          } else setTimeout(()=>setFlipped([]),1000);
+        }
+      };
+      return <div>
+        <div className="controls">
+          {!started? <button onClick={startGame}>Iniciar juego</button> : <button onClick={()=>startGame()}>Reiniciar juego</button>}
+        </div>
+        {started&&<><div className="grid">
+          {cards.map(card=>{ const isFlipped=flipped.includes(card.id)||matched.includes(card.id); const isMatched=matched.includes(card.id);
+            return <div key={card.id} className={`card ${isFlipped?'flipped':''} ${isMatched?'matched':''}`} onClick={()=>handleClick(card)}>
+              <div className="face back"></div>
+              <div className="face front">{card.sym}</div>
+            </div>;
+          })}
+        </div>{completed&&<div className="message">¡Juego completado en {moves} movimientos!</div>}</>}
+      </div>;
+    }
+    ReactDOM.render(<MemoryGame/>,document.getElementById('root'));
+  </script>
+</body>
+</html>
