@@ -24,7 +24,7 @@ Este portafolio fue creado como proyecto final para el curso de Tecnologías Web
 - Partículas interactivas de fondo
 - Efecto de sonido y rastro del cursor
 - Botones con efectos brillantes
-- Datos curiosos usando API de gatos
+- Datos curiosos usando API
 - Sección editable con tu nombre (simulación de login)
 - Animaciones en tarjetas y diseño responsive
 
