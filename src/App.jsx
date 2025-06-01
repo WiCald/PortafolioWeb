@@ -99,7 +99,16 @@ export default function App() {
   };
 
   return (
-    <div className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-colors duration-700 ease-in-out ${theme === "dark" ? "bg-zinc-900 text-white" : "bg-white text-black"}`}>
+    <div
+  className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-colors duration-700 ease-in-out"
+  style={{
+    backgroundColor: theme === "dark"
+      ? "rgba(10, 25, 47, 0.85)"     // azul oscuro elegante
+      : "rgba(255, 255, 255, 0.85)", // blanco translúcido
+    color: theme === "dark" ? "white" : "black"
+  }}
+>
+
       {retroMode && (
         <div
           className="fixed top-0 left-0 w-full h-full z-0 bg-cover bg-center pointer-events-none"
@@ -110,7 +119,8 @@ export default function App() {
       <Particles
         id="tsparticles"
         init={particlesInit}
-        className="absolute inset-0 -z-10 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{ zIndex: 0 }}
         options={{
           fullScreen: { enable: false },
           fpsLimit: 60,
@@ -123,14 +133,20 @@ export default function App() {
               repulse: { distance: 100, duration: 0.4 },
             },
           },
+          
           particles: {
             number: { value: 100 },
             size: { value: 3 },
             move: { enable: true, speed: 0.5 },
-            links: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-            shape: { type: "circle" },
-            color: { value: "#ffffff" },
-            opacity: { value: 0.5 },
+            links: {
+            enable: true,
+            distance: 150,
+            color: theme === "dark" ? "#ffffff" : "#000000",
+            opacity: 0.4,
+            width: 1
+          },
+          shape: { type: "circle" },
+          color: { value: theme === "dark" ? "#ffffff" : "#000000" },
           },
         }}
       />
@@ -190,7 +206,7 @@ export default function App() {
             </div>
           </header>
 
-          <main className="z-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
+          <main className="z-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4 bg-transparent">
             <Card title="Proyecto: Calculadora" titleColor="hover:text-red-600">
               <iframe src="https://wicald.github.io/ProyectoCalcu/" title="Calculadora" className="w-full h-96 border rounded"></iframe>
             </Card>
