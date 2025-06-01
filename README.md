@@ -35,6 +35,5 @@ git clone https://github.com/WiCald/portafolioweb.git
 cd portafolioweb
 npm install
 npm run dev
-
-
+```
 ![Capture d'écran 2025-06-01 040241](https://github.com/user-attachments/assets/430a7e07-dfff-4759-9b66-14266a6aa1ff)
