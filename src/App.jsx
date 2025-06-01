@@ -196,11 +196,11 @@ export default function App() {
             </Card>
             <Card title="HTML" titleColor="hover:text-green-500">
               <p>Lenguaje de marcado para estructura básica.</p>
-              <a href="/demo.html" target="_blank" className="underline text-blue-300">Ver ejemplo</a>
+              <a href={`${import.meta.env.BASE_URL}demo.html`} target="_blank" className="underline text-blue-300">Ver ejemplo</a>
             </Card>
             <Card title="CSS" titleColor="hover:text-blue-500">
               <p>Estilos visuales y presentación.</p>
-              <a href="/CSS.html" target="_blank" className="underline text-blue-500">Ver archivo CSS</a>
+              <a href={`${import.meta.env.BASE_URL}CSS.html`} target="_blank" className="underline text-blue-500">Ver archivo CSS</a>
             </Card>
             <Card title="JavaScript" titleColor="hover:text-yellow-400">
               <p>Interactividad con el DOM.</p>
