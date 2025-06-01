@@ -211,23 +211,29 @@ export default function App() {
               <iframe src="https://wicald.github.io/ProyectoCalcu/" title="Calculadora" className="w-full h-96 border rounded"></iframe>
             </Card>
             <Card title="HTML" titleColor="hover:text-green-500">
-              <p>Lenguaje de marcado para estructura básica.</p>
-              <a href={`${import.meta.env.BASE_URL}demo.html`} target="_blank" className="underline text-blue-300">Ver ejemplo</a>
+              <p>HTML es el lenguaje de marcado que da estructura a la web. Esta sección muestra una historia corta con encabezados, párrafos, listas y un poema escrito con semántica clara.</p>
+              <p>He aquí un poema con eso.</p>
+              <a href={`${import.meta.env.BASE_URL}demo.html`} target="_blank" className="underline text-blue-500">Ver ejemplo</a>
             </Card>
             <Card title="CSS" titleColor="hover:text-blue-500">
               <p>Estilos visuales y presentación.</p>
+              <p>Obra visual compuesta únicamente con CSS. Arte puro basado en lo aprendido durante el curso. c:</p>
               <a href={`${import.meta.env.BASE_URL}CSS.html`} target="_blank" className="underline text-blue-500">Ver archivo CSS</a>
             </Card>
             <Card title="JavaScript" titleColor="hover:text-yellow-400">
               <p>Interactividad con el DOM.</p>
+              <p className="mt-2">Como ejemplo visual, uso una API para mostrar un GIF aleatorio de gato en cada carga:</p>
               <img src={catGif} alt="Gato JS" className="rounded mt-2" />
             </Card>
             <Card title="API" titleColor="hover:text-purple-400">
+              <p>Colaboré en la implementación del backend del proyecto "La Liga Tracker", consumiendo APIs externas.</p>
               <p className="italic">{techTrivia[triviaIndex]}</p>
               <button onClick={() => setTriviaIndex((triviaIndex + 1) % techTrivia.length)} className="mt-2 glow-button">Otro dato</button>
             </Card>
             <Card title="React" titleColor="hover:text-pink-400">
               <p>Hooks y componentes funcionales.</p>
+              <p>Construí un juego de memoria usando componentes funcionales, hooks y estado. ¡Se puede ver aquí mismo!</p>
+              <a href={`${import.meta.env.BASE_URL}memoria.html`} target="_blank" className="underline text-blue-500 block mt-2">Ver juego de memoria</a>
               <button onClick={() => setCounter(counter + 1)} className="mt-2 bg-indigo-600 text-white px-3 py-1 rounded">Contador: {counter}</button>
               <button onClick={() => setToggleInfo(!toggleInfo)} className="mt-2 ml-2 bg-green-600 text-white px-2 py-1 rounded">{toggleInfo ? "Ocultar" : "Mostrar"} info</button>
               {toggleInfo && <p className="mt-2 text-sm">React permite crear interfaces reactivas fácilmente.</p>}
