@@ -227,6 +227,7 @@ export default function App() {
             </Card>
             <Card title="API" titleColor="hover:text-purple-400">
               <p>Colaboré en la implementación del backend del proyecto "La Liga Tracker", consumiendo APIs externas.</p>
+              <a href="https://github.com/WiCald/Lab6Web" target="_blank" rel="noopener noreferrer" className="block mt-4 text-blue-500 underline hover:text-blue-500">Ver repo de La Liga Tracker aquí</a>
               <p>Aquí mismo, solamente muestro un dato curioso de la tecnología.</p>
               <p className="italic">{techTrivia[triviaIndex]}</p>
               <button onClick={() => setTriviaIndex((triviaIndex + 1) % techTrivia.length)} className="mt-2 glow-button">Otro dato</button>
