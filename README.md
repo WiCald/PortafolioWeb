@@ -36,6 +36,7 @@ cd portafolioweb
 npm install
 npm run dev
 ```
-![Capture d'écran 2025-06-01 042621](https://github.com/user-attachments/assets/fdbcc8ac-31ea-4e0d-b15a-da7a0ce3026f)
+
+![Capture d'écran 2025-06-02 001238](https://github.com/user-attachments/assets/59de6671-5104-48c3-882a-1a4d585c5805)
 
 
